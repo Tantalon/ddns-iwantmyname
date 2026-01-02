@@ -5,7 +5,7 @@ while true; do
     CURIP=$(dig +short $DDNS_HOSTNAME @resolver1.opendns.com)
     if [ "$WANIP" != "$CURIP" ]; then
         echo -n "Updating $DDNS_HOSTNAME to $WANIP: "
-        echo $(curl -sS -u "$USER:$PASS" "https://iwantmyname.com/basicauth/ddns?hostname=${DDNS_HOSTNAME}")
+        echo $(curl -sS "https://dynamicdns.key-systems.net/update.php?hostname=${DDNS_HOSTNAME}&password=${PASS}&ip=auto")
     elif [ $DEBUG ]; then
         echo "DDNS OK"
     fi
